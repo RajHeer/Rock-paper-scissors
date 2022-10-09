@@ -8,7 +8,7 @@ function getCompChoice () {
 
 function getPlayChoice () {
     let playChoice = prompt("Enter your choice - 'r', 'p', or 's'?");
-    console.log(playChoice);
+    return playChoice;
 }
 
 function playRound () {
