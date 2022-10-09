@@ -38,3 +38,18 @@ function playRound () {
         return "win";
     }
 }
+
+function game () {
+    let playScore = 0;
+    let compScore = 0;
+    for (let i = 0; i < 5 ; i++) {
+        let result = playRound();
+        if (result === "win") {
+            ++playScore;
+        } else if (result === "lose") {
+            ++compScore;
+        }
+        console.log(`SCORE: YOU - ${playScore}, COMP - ${compScore}`);
+    }
+    console.log(`FINAL SCORE: YOU - ${playScore}, COMP - ${compScore}`);
+}
