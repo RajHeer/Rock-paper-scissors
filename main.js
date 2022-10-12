@@ -40,7 +40,7 @@ function playRound (playChoice) {
 }
 
 function gameScore (outcome) {
-    // SETS SCORE FROM WHAT'S ON RENDERED PAGE //
+    //  NOTE SCORE FROM WHAT'S ON RENDERED PAGE //
     let showPlayScore = playerScore.textContent;
     let showCompScore = compScore.textContent;
 
@@ -49,21 +49,28 @@ function gameScore (outcome) {
         ++showPlayScore;
     } else if (outcome === "lose") {
         ++showCompScore;
-    }
+    };
     
     // UPDATES RENDERED PAGE WITH NEW SCORE //
     playerScore.textContent = showPlayScore;
     compScore.textContent = showCompScore;
 
+    // EVALUATE SCORES DECLARE FINAL RESULT WHEN SCORE = 5//
+    if (showPlayScore === 5) {
+        finalResult.textContent = "YOU WIN THE BATTLE!!!";
+        setTimeout(reset, 2000);
+    } else if (showCompScore === 5) {
+        finalResult.textContent = "YOU LOSE THE BATTLE!!!";
+        setTimeout(reset, 2000);
+    }
+}
 
-    // // EVALUATE SCORES AT GAME END DECLARE FINAL RESULT //
-    // if (playScore > compScore) {
-    //     return `FINAL SCORE: YOU - ${playScore}, COMP - ${compScore} - YOU WIN!!!`;
-    // } else if (playScore < compScore) {
-    //     return `FINAL SCORE: YOU - ${playScore}, COMP - ${compScore} - YOU LOSE!!!`;
-    // } else {
-    //     return `FINAL SCORE: YOU - ${playScore}, COMP - ${compScore} - DRAW.`;
-    // }
+// RESETS THE GAME, CALLED IN gameSCORE () with timeout //
+function reset () {
+    roundResult.textContent = "Do BATTLE AGAIN!!!";
+    playerScore.textContent = 0;
+    compScore.textContent = 0;
+    finalResult.textContent = "Fight until FIVE points!!!";
 }
 
 // SELECTORS //
@@ -71,6 +78,7 @@ const buttons = document.querySelectorAll('button');
 const roundResult = document.querySelector('.round-result');
 const playerScore = document.querySelector('.playerScore');
 const compScore = document.querySelector('.compScore');
+const finalResult = document.querySelector('.finalResult');
 
 // EVENT LISTENER //
 buttons.forEach(button => {
