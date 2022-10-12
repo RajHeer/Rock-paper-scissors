@@ -43,6 +43,7 @@ function game () {
     let playScore = 0;
     let compScore = 0;
 
+    // PLAY ROUNDS AND TALLY WINS AND LOSSES //
     for (let i = 0; i < 5 ; i++) {
         let result = playRound();
         if (result === "win") {
@@ -53,6 +54,7 @@ function game () {
         console.log(`SCORE: YOU - ${playScore}, COMP - ${compScore}`);
     }
 
+    // EVALUATE SCORES AT GAME END DECLARE FINAL RESULT //
     if (playScore > compScore) {
         return `FINAL SCORE: YOU - ${playScore}, COMP - ${compScore} - YOU WIN!!!`;
     } else if (playScore < compScore) {
