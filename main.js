@@ -6,14 +6,14 @@ function getCompChoice () {
     return compChoice;
 }
 
-function getPlayChoice () {
-    let playChoice = prompt("Enter your choice - 'r', 'p', or 's'?");
-    return playChoice;
-}
+// function getPlayChoice () {
+//     let playChoice = prompt("Enter your choice - 'r', 'p', or 's'?");
+//     return playChoice;
+// }
 
-function playRound () {
+function playRound (playChoice) {
     let compChoice = getCompChoice();
-    let playChoice = getPlayChoice().toLowerCase();
+    // let playChoice = getPlayChoice().toLowerCase();
 
     if (compChoice === playChoice) {
         console.log(`You both drew with ${compChoice}`);
@@ -68,9 +68,8 @@ function playRound () {
 const buttons = document.querySelectorAll('button');
 
 // EVENT LISTENER //
-
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        console.log(button.value);
+        playRound(button.value);
     });
 });
