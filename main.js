@@ -1,19 +1,22 @@
+// SELECTORS //
+const buttons = document.querySelectorAll('button');
+const roundResult = document.querySelector('.round-result');
+const playerScore = document.querySelector('.playerScore');
+const compScore = document.querySelector('.compScore');
+const finalResult = document.querySelector('.finalResult');
+
 const weapons = ['rock','paper','scissors']
 
+// GENERATE COMP CHOICE //
 function getCompChoice () {
     let num = Math.floor(Math.random() * 3);
     let compChoice = weapons[num];
     return compChoice;
 }
 
-// function getPlayChoice () {
-//     let playChoice = prompt("Enter your choice - 'r', 'p', or 's'?");
-//     return playChoice;
-// }
-
+// PLAY A ROUND //
 function playRound (playChoice) {
     let compChoice = getCompChoice();
-    // let playChoice = getPlayChoice().toLowerCase();
 
     if (compChoice === playChoice) {
         roundResult.textContent =`You both drew with ${compChoice}`;
@@ -39,6 +42,7 @@ function playRound (playChoice) {
     }
 }
 
+// SCORE GAME & END, THEN RESET, WHEN REACHING 5 //
 function gameScore (outcome) {
     //  NOTE SCORE FROM WHAT'S ON RENDERED PAGE //
     let showPlayScore = playerScore.textContent;
@@ -50,7 +54,7 @@ function gameScore (outcome) {
     } else if (outcome === "lose") {
         ++showCompScore;
     };
-    
+
     // UPDATES RENDERED PAGE WITH NEW SCORE //
     playerScore.textContent = showPlayScore;
     compScore.textContent = showCompScore;
@@ -58,10 +62,10 @@ function gameScore (outcome) {
     // EVALUATE SCORES DECLARE FINAL RESULT WHEN SCORE = 5//
     if (showPlayScore === 5) {
         finalResult.textContent = "YOU WIN THE BATTLE!!!";
-        setTimeout(reset, 2000);
+        setTimeout(reset, 2500);
     } else if (showCompScore === 5) {
         finalResult.textContent = "YOU LOSE THE BATTLE!!!";
-        setTimeout(reset, 2000);
+        setTimeout(reset, 2500);
     }
 }
 
@@ -72,13 +76,6 @@ function reset () {
     compScore.textContent = 0;
     finalResult.textContent = "Fight until FIVE points!!!";
 }
-
-// SELECTORS //
-const buttons = document.querySelectorAll('button');
-const roundResult = document.querySelector('.round-result');
-const playerScore = document.querySelector('.playerScore');
-const compScore = document.querySelector('.compScore');
-const finalResult = document.querySelector('.finalResult');
 
 // EVENT LISTENER //
 buttons.forEach(button => {
