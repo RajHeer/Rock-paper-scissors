@@ -16,25 +16,25 @@ function playRound (playChoice) {
     // let playChoice = getPlayChoice().toLowerCase();
 
     if (compChoice === playChoice) {
-        console.log(`You both drew with ${compChoice}`);
+        roundResult.textContent =`You both drew with ${compChoice}`;
         return "draw";
     } else if (compChoice === weapons[0] && playChoice === weapons[2]) {
-        console.log("You lose! Rock beat scissors.");
+        roundResult.textContent = "You lose! Rock beat scissors.";
         return "lose";
     } else if (compChoice === weapons[0]  && playChoice === weapons[1]) {
-        console.log("You win! Paper beat rock.");
+        roundResult.textContent = "You win! Paper beat rock.";
         return "win";
     } else if (compChoice === weapons[2]  && playChoice === weapons[1]) {
-        console.log("You lose! Scissors beat paper.");
+        roundResult.textContent = "You lose! Scissors beat paper.";
         return "lose";
     } else if ( compChoice === weapons[2]  && playChoice === weapons[0]) {
-        console.log("You win! Rock beats scissors");
+        roundResult.textContent = "You win! Rock beats scissors";
         return "win";
     } else if (compChoice === weapons[1]  && playChoice === weapons[0]) {
-        console.log("You lose! Paper beats rock.");
+        roundResult.textContent = "You lose! Paper beats rock.";
         return "lose";
     } else if (compChoice === weapons[1]  && playChoice === weapons[2]) {
-        console.log("You win! Scissors beat paper");
+        roundResult.textContent = "You win! Scissors beat paper";
         return "win";
     }
 }
@@ -64,8 +64,9 @@ function playRound (playChoice) {
 //     }
 // }
 
-// BUTTON SELECTORS //
+// SELECTORS //
 const buttons = document.querySelectorAll('button');
+const roundResult = document.querySelector('.round-result');
 
 // EVENT LISTENER //
 buttons.forEach(button => {
