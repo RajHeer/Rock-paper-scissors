@@ -17,56 +17,60 @@ function playRound (playChoice) {
 
     if (compChoice === playChoice) {
         roundResult.textContent =`You both drew with ${compChoice}`;
-        return "draw";
+        gameScore("draw");
     } else if (compChoice === weapons[0] && playChoice === weapons[2]) {
         roundResult.textContent = "You lose! Rock beat scissors.";
-        return "lose";
+        gameScore("lose");
     } else if (compChoice === weapons[0]  && playChoice === weapons[1]) {
         roundResult.textContent = "You win! Paper beat rock.";
-        return "win";
+        gameScore("win");
     } else if (compChoice === weapons[2]  && playChoice === weapons[1]) {
         roundResult.textContent = "You lose! Scissors beat paper.";
-        return "lose";
+        gameScore("lose");
     } else if ( compChoice === weapons[2]  && playChoice === weapons[0]) {
         roundResult.textContent = "You win! Rock beats scissors";
-        return "win";
+        gameScore("win");
     } else if (compChoice === weapons[1]  && playChoice === weapons[0]) {
         roundResult.textContent = "You lose! Paper beats rock.";
-        return "lose";
+        gameScore("lose");
     } else if (compChoice === weapons[1]  && playChoice === weapons[2]) {
         roundResult.textContent = "You win! Scissors beat paper";
-        return "win";
+        gameScore("win");
     }
 }
 
-// function game () {
-//     let playScore = 0;
-//     let compScore = 0;
+function gameScore (outcome) {
+    // SETS SCORE FROM WHAT'S ON RENDERED PAGE //
+    let showPlayScore = playerScore.textContent;
+    let showCompScore = compScore.textContent;
 
-//     // PLAY ROUNDS AND TALLY WINS AND LOSSES //
-//     for (let i = 0; i < 5 ; i++) {
-//         let result = playRound();
-//         if (result === "win") {
-//             ++playScore;
-//         } else if (result === "lose") {
-//             ++compScore;
-//         }
-//         console.log(`SCORE: YOU - ${playScore}, COMP - ${compScore}`);
-//     }
+    // AMENDS SCORE FOR WIN OR LOSS //
+    if (outcome === "win") {
+        ++showPlayScore;
+    } else if (outcome === "lose") {
+        ++showCompScore;
+    }
+    
+    // UPDATES RENDERED PAGE WITH NEW SCORE //
+    playerScore.textContent = showPlayScore;
+    compScore.textContent = showCompScore;
 
-//     // EVALUATE SCORES AT GAME END DECLARE FINAL RESULT //
-//     if (playScore > compScore) {
-//         return `FINAL SCORE: YOU - ${playScore}, COMP - ${compScore} - YOU WIN!!!`;
-//     } else if (playScore < compScore) {
-//         return `FINAL SCORE: YOU - ${playScore}, COMP - ${compScore} - YOU LOSE!!!`;
-//     } else {
-//         return `FINAL SCORE: YOU - ${playScore}, COMP - ${compScore} - DRAW.`;
-//     }
-// }
+
+    // // EVALUATE SCORES AT GAME END DECLARE FINAL RESULT //
+    // if (playScore > compScore) {
+    //     return `FINAL SCORE: YOU - ${playScore}, COMP - ${compScore} - YOU WIN!!!`;
+    // } else if (playScore < compScore) {
+    //     return `FINAL SCORE: YOU - ${playScore}, COMP - ${compScore} - YOU LOSE!!!`;
+    // } else {
+    //     return `FINAL SCORE: YOU - ${playScore}, COMP - ${compScore} - DRAW.`;
+    // }
+}
 
 // SELECTORS //
 const buttons = document.querySelectorAll('button');
 const roundResult = document.querySelector('.round-result');
+const playerScore = document.querySelector('.playerScore');
+const compScore = document.querySelector('.compScore');
 
 // EVENT LISTENER //
 buttons.forEach(button => {
