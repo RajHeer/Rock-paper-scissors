@@ -19,5 +19,5 @@ Choose your weapon. Press a button. Do battle. First to five wins.
 3. Game logic to track scores and identify final winner and reset game.
 
 ## To do
-1. Refactor/re-write and use object (with player choices as key, and array with computer choices as array, each one indexed so player 0 = win, 1 = win, 2 = draw) and look up outcome as exercise.
+1. Refactor/re-write game logic and use object (with player choices as key, and array with computer choices as array, each one indexed so player 0 = win, 1 = win, 2 = draw) and look up outcome as exercise.
 2. Style!!!
