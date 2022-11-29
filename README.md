@@ -6,7 +6,7 @@ The classic.
 
 Completed as part of The Odin Project cirriculum. Original instruction are [here](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors).
 
-To play click [here](https://rajheer.github.io/rock_paper_scissors/).
+To play click [here](https://rajheer.github.io/Rock-paper-scissors/). 
 
 ## Instructions
 
